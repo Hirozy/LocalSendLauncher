@@ -37,7 +37,7 @@ The launcher does **not** modify `/Applications/LocalSend.app`, call `launchctl 
 
 ## Using the app
 
-1. Download and unzip `LocalSend-Launcher-macOS.zip`, or build the project as described below.
+1. Build `LocalSend Launcher.app` from source by following the instructions in [Building from source](#building-from-source).
 2. Move `LocalSend Launcher.app` to `/Applications` or another folder indexed by Spotlight.
 3. Open `LocalSend Launcher.app` instead of opening LocalSend directly.
 4. Optionally drag the launcher to the Dock.
@@ -49,8 +49,8 @@ The build script creates an ad-hoc signed app, not a notarized Developer ID rele
 Install Xcode or the Xcode Command Line Tools, make sure LocalSend is installed in `/Applications`, then run:
 
 ```bash
-git clone git@github.com:Hirozy/LocalSendLauncher.app.git
-cd LocalSendLauncher.app
+git clone https://github.com/Hirozy/LocalSendLauncher.git
+cd LocalSendLauncher
 make build
 ```
 
