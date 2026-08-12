@@ -46,7 +46,7 @@ The build script creates an ad-hoc signed app, not a notarized Developer ID rele
 
 ## Building from source
 
-Install Xcode or the Xcode Command Line Tools, make sure LocalSend is installed in `/Applications`, then run:
+Install Xcode or the Xcode Command Line Tools, then run:
 
 ```bash
 git clone https://github.com/Hirozy/LocalSendLauncher.git
@@ -61,7 +61,7 @@ build/LocalSend Launcher.app
 dist/LocalSend-Launcher-macOS.zip
 ```
 
-The executable is compiled as a universal binary for both `arm64` and `x86_64`. The build copies LocalSend's installed icon into the launcher and applies a local ad-hoc code signature.
+The executable is compiled as a universal binary for both `arm64` and `x86_64`. The build uses the bundled LocalSend icon and applies a local ad-hoc code signature.
 
 To remove generated files:
 
@@ -73,6 +73,7 @@ make clean
 
 ```text
 Sources/main.swift       Launcher implementation
+Resources/AppIcon.icns   Bundled LocalSend app icon
 Resources/Info.plist     macOS application metadata
 Scripts/build.sh         Universal app and ZIP build
 Makefile                 Build and clean shortcuts

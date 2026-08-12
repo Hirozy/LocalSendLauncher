@@ -10,7 +10,7 @@ DIST_ROOT="$PROJECT_ROOT/dist"
 APP_PATH="$BUILD_ROOT/$APP_NAME.app"
 EXECUTABLE_PATH="$APP_PATH/Contents/MacOS/$APP_NAME"
 MODULE_CACHE="${TMPDIR:-/tmp}/localsend-launcher-module-cache"
-LOCAL_SEND_ICON="/Applications/LocalSend.app/Contents/Resources/AppIcon.icns"
+APP_ICON="$PROJECT_ROOT/Resources/AppIcon.icns"
 
 for tool in swiftc lipo codesign ditto; do
     if ! command -v "$tool" >/dev/null 2>&1; then
@@ -19,8 +19,8 @@ for tool in swiftc lipo codesign ditto; do
     fi
 done
 
-if [[ ! -f "$LOCAL_SEND_ICON" ]]; then
-    echo "LocalSend is required at /Applications/LocalSend.app." >&2
+if [[ ! -f "$APP_ICON" ]]; then
+    echo "Bundled app icon not found: $APP_ICON" >&2
     exit 1
 fi
 
@@ -55,7 +55,7 @@ lipo -create \
     -output "$EXECUTABLE_PATH"
 
 cp "$PROJECT_ROOT/Resources/Info.plist" "$APP_PATH/Contents/Info.plist"
-cp "$LOCAL_SEND_ICON" "$APP_PATH/Contents/Resources/AppIcon.icns"
+cp "$APP_ICON" "$APP_PATH/Contents/Resources/AppIcon.icns"
 chmod 755 "$EXECUTABLE_PATH"
 
 # Remove filesystem metadata that can interfere with signing, then apply a local
